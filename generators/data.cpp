@@ -6,6 +6,8 @@
 #include <utility>
 #include <data/types.h>
 
-std::shared_ptr<Vertex> tinygraph_vertex_create(const std::string& name, std::shared_ptr<Type> type) {
-    return std::shared_ptr<Vertex>(new Vertex(name, std::move(type)));
+namespace tinygraph {
+    std::shared_ptr<Vertex> vertex_create(const std::string& name, std::shared_ptr<Type> type) {
+        return std::make_shared<Vertex>(name, std::move(type));
+    }
 }

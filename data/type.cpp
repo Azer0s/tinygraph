@@ -6,6 +6,8 @@
 
 #include <utility>
 
-Type::Type(std::string name) {
-    this->name = std::move(name);
+namespace tinygraph {
+    Type::Type(std::string name) {
+        this->name = std::move(name);
+    }
 }

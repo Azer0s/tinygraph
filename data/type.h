@@ -7,13 +7,13 @@
 
 #include <string>
 
-class Type {
-private:
-    std::string name;
-
-public:
-    explicit Type(std::string name);
-};
+namespace tinygraph {
+    class Type {
+    public:
+        std::string name;
+        explicit Type(std::string name);
+    };
+}
 
 
 #endif //TINYGRAPH_TYPE_H

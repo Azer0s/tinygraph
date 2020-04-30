@@ -6,15 +6,15 @@
 #include <memory>
 #include "tinygraph.h"
 
-#define DISTANCE "distance"
-#define NAME "name"
+static constexpr char DISTANCE[] = "distance";
+static constexpr char NAME[] = "name";
 
 void airport_example() {
-    auto airport = tinygraph_typestore_add("airport");
+    auto airport = tinygraph::typestore_add("airport");
 
-    auto g = std::make_unique<Graph>();
+    auto g = std::make_unique<tinygraph::Graph>();
 
-    std::shared_ptr<Vertex> v;
+    std::shared_ptr<tinygraph::Vertex> v;
 
     /////////////////
     /// CLUSTER 1 ///
@@ -127,22 +127,22 @@ void airport_example() {
 }
 
 void no_graph_example() {
-    auto city = tinygraph_typestore_add("city");
+    auto city = tinygraph::typestore_add("city");
 
-    auto vienna = tinygraph_vertex_create("Vienna", city);
-    auto berlin = tinygraph_vertex_create("Berlin", city);
-    auto paris = tinygraph_vertex_create("Paris", city);
+    auto vienna = tinygraph::vertex_create("Vienna", city);
+    auto berlin = tinygraph::vertex_create("Berlin", city);
+    auto paris = tinygraph::vertex_create("Paris", city);
 
     vienna->add_prop("language", "german");
     berlin->add_prop("language", "german");
     paris->add_prop("language", "french");
 
-    auto props = tinygraph_vertex_link(vienna, berlin, true);
+    auto props = tinygraph::vertex_link(vienna, berlin, true);
     props->insert(std::pair<std::string, std::string>("distance", "685 km"));
 }
 
 int main() {
-    tinygraph_typestore_init();
+    tinygraph::typestore_init();
 
     no_graph_example();
     airport_example();
