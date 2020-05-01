@@ -38,20 +38,20 @@ namespace tinygraph {
     std::string Graph::str() {
         std::string res;
 
-        for (const auto& v : this->vertices) {
-            res += v.first;
+        for (const auto& [key, vertex] : this->vertices) {
+            res += key;
 
-            for (const auto& p : v.second->properties) {
-                res += " [" + p.first + " = " + any_to_str(&p.second) + "]";
+            for (const auto& [propKey, property] : vertex->properties) {
+                res += " [" + propKey + " = " + any_to_str(&property) + "]";
             }
 
             res += "\n";
 
-            for (const auto& c : v.second->connections) {
-                res += "\t" + v.first + " -> " + c->to->name;
+            for (const auto& c : vertex->connections) {
+                res += "\t" + key + " -> " + c->to->name;
 
-                for (const auto& p : *c->properties) {
-                    res += " [" + p.first + " = " + any_to_str(&p.second) + "]";
+                for (const auto& [propKey, property] : *c->properties) {
+                    res += " [" + propKey + " = " + any_to_str(&property) + "]";
                 }
 
                 res += "\n";

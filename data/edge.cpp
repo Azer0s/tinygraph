@@ -6,7 +6,5 @@
 #include <utility>
 
 namespace tinygraph {
-    Edge::Edge(std::shared_ptr<Vertex> vertex) {
-        this->to = std::move(vertex);
-    }
+    Edge::Edge(std::shared_ptr<Vertex> vertex) : to(std::move(vertex)) { }
 }

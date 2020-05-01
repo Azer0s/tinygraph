@@ -4,6 +4,7 @@
 
 #include <string>
 #include <any>
+#include <typeinfo>
 
 namespace tinygraph {
     std::string any_to_str(const std::any* val) {

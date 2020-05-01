@@ -20,7 +20,7 @@ namespace tinygraph {
         Vertex(std::string, std::shared_ptr<Type>);
         ~Vertex();
 
-        void add_prop(const char*, std::any);
+        void add_prop(const char* key, std::any value);
 
         std::string name;
         std::shared_ptr<Type> type;
