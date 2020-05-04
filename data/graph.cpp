@@ -5,8 +5,6 @@
 #include <tinygraph.h>
 
 #include <utility>
-#include <iostream>
-#include <sstream>
 #include <functions/util.h>
 #include <algorithm>
 #include "graph.h"
@@ -61,10 +59,27 @@ namespace tinygraph {
         return res;
     }
 
+    void dfs_util(const std::shared_ptr<Vertex>& vertex, const std::shared_ptr<std::map<std::string, bool>>& visited) {
+        (*visited)[vertex->name] = true;
+
+        for (const auto& c : vertex->connections) {
+            if (!visited->find(c->to->name)->second) {
+                dfs_util(c->to, visited);
+            }
+        }
+    }
+
     std::vector<std::vector<std::string>> Graph::connected_components() {
+        auto l = std::vector<Vertex>();
+        auto visited = std::shared_ptr<std::map<std::string, bool>>(new std::map<std::string, bool>);
+
+        for (const auto& pair : this->vertices) {
+            (*visited)[pair.first] = false;
+        }
+
+        dfs_util(this->vertices.begin()->second, visited);
         //TODO
         this->str();
         return std::vector<std::vector<std::string>>();
     }
 }
-
