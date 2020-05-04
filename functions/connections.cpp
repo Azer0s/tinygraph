@@ -9,10 +9,10 @@
 
 namespace tinygraph {
     std::shared_ptr<std::map<std::string, std::any>> vertex_link(std::shared_ptr<Vertex> from, std::shared_ptr<Vertex> to, bool undirected) {
-        //TODO: Is this really better tho?
         auto from_cp = std::move(from);
+        auto to_cp = std::move(to);
 
-        auto to_edge = std::make_shared<Edge>(std::move(to));
+        auto to_edge = std::make_shared<Edge>(to_cp);
         to_edge->properties = std::make_shared<std::map<std::string, std::any>>();
         from_cp->connections.push_back(to_edge);
 
