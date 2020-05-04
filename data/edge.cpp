@@ -5,6 +5,6 @@
 #include "types.h"
 #include <utility>
 
-Edge::Edge(std::shared_ptr<Vertex> vertex) {
-    this->to = std::move(vertex);
+namespace tinygraph {
+    Edge::Edge(std::shared_ptr<Vertex> vertex) : to(std::move(vertex)) { }
 }

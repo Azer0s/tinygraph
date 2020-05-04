@@ -8,6 +8,8 @@
 #include <string>
 #include <any>
 
-std::string any_to_str(std::any val);
+namespace tinygraph {
+    std::string any_to_str(const std::any* val);
+}
 
 #endif //TINYGRAPH_UTIL_H
